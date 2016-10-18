@@ -36,9 +36,19 @@
 		
 	}
 	
+	
+	if( isset($_POST["userInterest"])&&
+		!empty($_POST["userInterest"])
+		){
+			saveUserInterest(cleanInput($_POST["userInterest"]));
+		}
+	
     $interests = getAllInterests();
+	$userInterests = getAllUserInterests();
 ?>
-<h1><a href="data.php"> < tagasi</a> Kasutaja leht</h1>
+
+<body background="http://www.pixeden.com/media/k2/galleries/165/004-subtle-light-pattern-background-texture-vol5.jpg">
+<center><h1><a href="data.php"> < tagasi</a> Kasutaja leht</h1>
 <?=$msg;?>
 <p>
 	Tere tulemast <?=$_SESSION["userEmail"];?>!
@@ -51,7 +61,7 @@
     
     $listHtml = "<ul>";
 	
-	foreach($interests as $i){
+	foreach($userInterests as $i){
 		
 		
 		$listHtml .= "<li>".$i->interest."</li>";
@@ -97,6 +107,7 @@
     </select>
     	
 	
-	<input type="submit" value="Lisa">
+	<input type="submit" value="Lisa"></center>
 	
 </form>
+</body>
