@@ -48,15 +48,12 @@
 ?>
 
 <body background="http://www.pixeden.com/media/k2/galleries/165/004-subtle-light-pattern-background-texture-vol5.jpg">
-<center><h1><a href="data.php"> < tagasi</a> Kasutaja leht</h1>
+<br><center><br><h1><font face="Verdana" color="#663300" ><a href="data.php"> < tagasi</a> Kasutaja leht</font></h1>
 <?=$msg;?>
-<p>
-	Tere tulemast <?=$_SESSION["userEmail"];?>!
-	<a href="?logout=1">Logi välja</a>
-</p>
 
+<br><br>
 
-<h2>Salvesta hobi</h2>
+<h2><font face="Verdana" color="#663300" >Salvesta hobi</font></h2>
 <?php
     
     $listHtml = "<ul>";
@@ -74,18 +71,18 @@
 	echo $listHtml;
     
 ?>
-<form method="POST">
+<form method="POST"><font face="Verdana" color="#663300" >
 	
 	<label>Hobi/huviala nimi</label><br>
 	<input name="interest" type="text">
 	
 	<input type="submit" value="Salvesta">
 	
-</form>
+</font></form>
 
 
 
-<h2>Kasutaja hobid</h2>
+<h2><font face="Verdana" color="#663300">Kasutaja hobid</h2>
 <form method="POST">
 	
 	<label>Hobi/huviala nimi</label><br>
@@ -107,7 +104,16 @@
     </select>
     	
 	
-	<input type="submit" value="Lisa"></center>
+	<input type="submit" value="Lisa">
 	
+	<p>
+	Tere tulemast <?=$_SESSION["userEmail"];?>!
+	<a href="?logout=1">Logi välja</a>
+</p>
+	
+	
+	
+	
+	</center>
 </form>
 </body>
