@@ -3,10 +3,10 @@
 	
 	require("functions.php");
 	
-	$taim="";
-	$intervall="";
+	$plant="";
+	$wateringInterval="";
 	$plantError="";
-	$intervalError="";
+	$wateringIntervalError="";
 	
 	
 	//kui ei ole kasutaja id'd
@@ -36,13 +36,13 @@
 		unset($_SESSION["message"]);
 	}
 	
-	if (isset($_POST["taim"]) &&
-		(isset($_POST["kastmiskorda"]) &&
-		!empty($_POST["taim"]) &&
-		!empty($_POST["kastmiskorda"])
+	if (isset($_POST["user_plant"]) &&
+		(isset($_POST["waterings"]) &&
+		!empty($_POST["user_plant"]) &&
+		!empty($_POST["waterings"])
 		)) {
 			
-			savePlant(cleanInput($_POST["taim"]), $_POST["kastmiskorda"]);
+			savePlant(cleanInput($_POST["user_plant"]), $_POST["waterings"]);
 			
 			header("Location: data.php");
 		    exit();
@@ -56,33 +56,33 @@
 		
 	
 
-	if( isset($_POST["taim"] )){
+	if( isset($_POST["user_plant"] )){
 
 	
 
-		if( empty($_POST["taim"])) {
+		if( empty($_POST["user_plant"])) {
 
 			$plantError = "sisesta taime nimetus";
 			
 		}else{
 			
 			
-			$taim=$_POST["taim"];
+			$plant=$_POST["user_plant"];
 
 
 
 			}
 	}
 	
-	if( isset($_POST["kastmiskorda"])) {
+	if( isset($_POST["waterings"])) {
 		
-		if( empty($_POST["kastmiskorda"]))
+		if( empty($_POST["waterings"]))
         {
-			$intervalError = "Sisesta kastmisintervall";
+			$wateringIntervalError = "Sisesta kastmisintervall";
 			
 			} else { 
 			
-			$intervall = $_POST["kastmiskorda"];
+			$wateringInterval = $_POST["waterings"];
 		
 		}		
 	}
@@ -107,12 +107,12 @@
 
           
 	 <p><font face="verdana" color="#006600">Sisesta taime nimetus</font></p>
-		<input name="taim" placeholder="taime nimetus"  type="text" > 
+		<input name="user_plant" placeholder="taime nimetus"  type="text" > 
 
 	<br><br>
 
         <p><font face="verdana"color="#006600">Sisesta taime kastmisintervall</font></p>
-		<input name="kastmiskorda" placeholder="mitme päeva tagant"  type ="number"> 
+		<input name="waterings" placeholder="mitme päeva tagant"  type ="number"> 
 
 	<br>
 

@@ -100,7 +100,7 @@ require("../../config.php");
 	}
 	
 		
-	function savePlant ($taim, $intervall) {
+	function savePlant ($plant, $watering) {
 		
 		
 		
@@ -108,14 +108,14 @@ require("../../config.php");
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
 		
 		$stmt = $mysqli->prepare(
-		"INSERT INTO lilled (taim, intervall) VALUES (?,?)");
+		"INSERT INTO flowers (plant, wateringInterval) VALUES (?,?)");
 		
 		echo $mysqli->error;
 		
 		
 		
 		//asendan küsimärgi
-		$stmt->bind_param("ss", $taim,$intervall);
+		$stmt->bind_param("ss", $plant,$watering);
 		
 		if ( $stmt->execute() )  {
 			
@@ -140,13 +140,13 @@ require("../../config.php");
 		
 		$stmt = $mysqli->prepare("
 		
-		  SELECT id, taim,intervall FROM lilled
+		  SELECT id, plant,wateringInterval FROM flowers
 		 
 		");
 		echo $mysqli->error;
 		
 		
-		$stmt -> bind_result ($id, $taim,$intervall) ;
+		$stmt -> bind_result ($id, $plant,$watering) ;
 		$stmt ->execute();
 		
 		//tekitan massiivi
@@ -161,15 +161,15 @@ require("../../config.php");
 			
 			//tekitan objekti
 			
-			$plant = new StdClass();
+			$plantClass = new StdClass();
 			
-		    $plant->id=$id;
-			$plant->taim=$taim;
-			$plant->intervall=$intervall;
+		    $plantClass->id=$id;
+			$plantClass->taim=$plant;
+			$plantClass->intervall=$watering;
 			
 			
 			
-			array_push($result, $plant);
+			array_push($result, $plantClass);
 		}
 		$stmt->close();
 		$mysqli->close();
